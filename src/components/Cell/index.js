@@ -1,20 +1,11 @@
 import React from 'react';
+import classNames from 'classnames';
+
 import './Cell.scss';
 
-const Cell = ({y, x}) => {
-    const onMouseOverHandler = (e) => {
-        if (e.type === 'mouseover') {
-            e.target.style.background = 'pink'
-        }
-        if (e.type === 'mouseout') {
-            e.target.style.background = ''
-        }
-    }
-
+const Cell = ({y, x, isShip}) => {
     return (
-        <div className='cell' onMouseOver={onMouseOverHandler} onMouseOut={onMouseOverHandler}>
-
-        </div>
+        <div className={classNames('cell', {'ship': isShip})} data-x={x} data-y={y}> </div>
     );
 };
 

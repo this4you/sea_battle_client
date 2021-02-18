@@ -3,4 +3,12 @@
   height: 60px;
   margin: 0.5px;
   border: 1px solid #cccccc;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+}
+
+.ship {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background-color: #539196;
 }
