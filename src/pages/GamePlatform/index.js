@@ -1,7 +1,7 @@
 import React from 'react';
 import './GamePlatform.scss';
-import {Battlefield} from '../../components/';
-import Cell from "../../components/Cell";
+import { Battlefield, ShipSelector } from '../../components/';
+
 
 const GamePlatform = () => {
     const items = [];
@@ -15,9 +15,16 @@ const GamePlatform = () => {
         }
     }
     return (
-        <div>
-            <h1>GamePlatform</h1>
-            <Battlefield items={items}/>
+        <div className="platform">
+            <div className="platform-header">
+                <h1>Sea Battle</h1>
+            </div>
+            <div className="platform-middle">
+                <ShipSelector />
+                <Battlefield items={items} />
+                <div className="platform-middle-right" />
+            </div>
+
         </div>
     );
 };

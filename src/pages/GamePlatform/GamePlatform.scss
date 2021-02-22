@@ -1,0 +1,13 @@
+.platform {
+    &-header  {
+        display: flex;
+        justify-content: center;
+    }
+    &-middle {
+        display: flex;
+        justify-content: space-between;
+        &-right {
+            width: 30%;
+        }
+    }
+}

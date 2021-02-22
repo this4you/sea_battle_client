@@ -1,0 +1,40 @@
+.ship-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+
+  &-wrap {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    h2 {
+      display: inline-block;
+      margin-left: 20px;
+      color: #539196;
+    }
+  }
+
+  &-ship {
+    margin-top: 10px;
+    display: flex;
+    cursor: pointer;
+  }
+
+  &-ship:hover {
+    .ship-selector-cell {
+      background-color: #539196;  
+    }
+  }
+
+  &-cell {
+    border: 1px solid rgb(216, 216, 216);
+    margin: 1px;
+    width: 70px;
+    height: 70px;
+    background-color: rgb(110, 162, 211);
+    &-active {
+      background-color: #539196;
+    }
+  }
+}

@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Battlefield.scss';
 import Cell from "../Cell";
 
-const Battlefield = ({items}) => {
+const Battlefield = ({ items }) => {
     const shipSize = 4;
     const [cells, setSells] = useState(items);
     const [isRow, setIsRow] = useState(false);
@@ -57,11 +57,9 @@ const Battlefield = ({items}) => {
     }
 
     return (
-        <div>
-            <div className='battlefield' onMouseOut={onMouseOverHandler} onMouseOver={onMouseOverHandler}
-                 onContextMenu={onContextMenu}>
-                {cells && cells.map(cell => <Cell key={cell._id} x={cell.x} y={cell.y} isShip={cell.isShip}/>)}
-            </div>
+        <div className='battlefield' onMouseOut={onMouseOverHandler} onMouseOver={onMouseOverHandler}
+            onContextMenu={onContextMenu}>
+            {cells && cells.map(cell => <Cell key={cell._id} x={cell.x} y={cell.y} isShip={cell.isShip} />)}
         </div>
     )
 };
