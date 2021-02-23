@@ -26,17 +26,10 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
-        case "USER:SET_DATA":
+        case "GAMECONFIG:SET_CURRENT_SIZE":
             return {
                 ...state,
-                data: payload,
-                isAuth: true,
-                token: window.localStorage.token
-            };
-        case "USER:SET_IS_AUTH":
-            return {
-                ...state,
-                isAuth: payload
+                currentShipSize: payload
             };
         default:
             return state;

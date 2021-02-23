@@ -1,46 +1,31 @@
 import React from 'react';
 import classNames from 'classnames';
-
 import './ShipSelector.scss';
-
-const Selector = ({ size, count }) => {
+const Selector = ({ size, count, isActive, onSelectSelected }) => {
     let items = [];
     for (let i = 0; i < size; i++) {
-        items.push(<div className="ship-selector-cell" />);
+        items.push(<div key={i} className={classNames('ship-selector-cell', { 'ship-selector-cell-active': isActive })} />);
     }
     return (
-        <div className="ship-selector-wrap">
+        <div className="ship-selector-wrap" onClick={() => onSelectSelected(size)} >
             <div className="ship-selector-ship">
                 {items}
             </div>
             <h2>{count}</h2>
-        </div>
+        </div >
     )
 }
 
-const ShipSelector = () => {
-    let selectrors = [
-        {
-            size: 1,
-            count: 4
-        },
-        {
-            size: 2,
-            count: 3
-        },
-        {
-            size: 3,
-            count: 2
-        },
-        {
-            size: 4,
-            count: 1
-        },
-    ]
+const ShipSelector = ({ selectrors, currentSelector, onSelectSelected }) => {
     return (
         <div className="ship-selector">
             <div>
-                {selectrors.map(item => <Selector size={item.size} count={item.count} />)}
+                {selectrors.map(item => <Selector
+                    size={item.size}
+                    onSelectSelected={onSelectSelected}
+                    key={item.size}
+                    count={item.count}
+                    isActive={currentSelector === item.size} />)}
             </div>
         </div>
     );

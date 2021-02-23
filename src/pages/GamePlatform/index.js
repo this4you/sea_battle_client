@@ -1,19 +1,9 @@
 import React from 'react';
 import './GamePlatform.scss';
-import { Battlefield, ShipSelector } from '../../components/';
-
+import { ConfigBattlefield, ShipSelector } from '../../containers';
 
 const GamePlatform = () => {
-    const items = [];
-    for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
-            items.push({
-                _id: j + " " + i,
-                x: j,
-                y: i
-            });
-        }
-    }
+
     return (
         <div className="platform">
             <div className="platform-header">
@@ -21,12 +11,11 @@ const GamePlatform = () => {
             </div>
             <div className="platform-middle">
                 <ShipSelector />
-                <Battlefield items={items} />
+                <ConfigBattlefield />
                 <div className="platform-middle-right" />
             </div>
 
         </div>
     );
 };
-
 export default GamePlatform;
