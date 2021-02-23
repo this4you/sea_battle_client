@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ConfigBattlefield as BattlefieldBase } from '../components';
+import { ConfigBattlefield as ConfigBattlefieldBase } from '../components';
 import { gameConfigActions } from '../redux/actions';
 
-const ConfigBattlefield = ({ cells, currentShipSize }) => {
+const ConfigBattlefield = ({ cells, currentShipSize, setShip, canAddShip }) => {
     return (
-        <BattlefieldBase items={cells} currentShipSize={currentShipSize} />
+        <ConfigBattlefieldBase items={cells} currentShipSize={currentShipSize} addShip={setShip} canAddShip={canAddShip}/>
     )
 };
 export default connect(({ battlefield, gameConfigs }) => (
     {
         cells: battlefield.cells,
-        currentShipSize: gameConfigs.currentShipSize
+        currentShipSize: gameConfigs.currentShipSize,
+        canAddShip: gameConfigs.canAddShip
     }
 ), gameConfigActions)(ConfigBattlefield);

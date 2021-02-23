@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import Battlefield from "../Battlefield";
 
-const ConfigBattlefield = ({ items, currentShipSize }) => {
+const ConfigBattlefield = ({ items, currentShipSize, addShip, canAddShip }) => {
     const [cells, setSells] = useState(items);
     const [isRow, setIsRow] = useState(false);
+
     const getShip = (x, y) => {
         let ship = [];
         for (let i = 0; i < currentShipSize; i++) {
             let cell = cells.filter((item) => {
                 if (isRow) {
-                    return item.y === +y && item.x === +x + i;
+                    return item.y === +y && item.x === +x + i && !item.isShip && !item.isAroundZone;
                 } else {
-                    return item.y === +y + i && item.x === +x;
+                    return item.y === +y + i && item.x === +x && !item.isShip && !item.isAroundZone;
                 }
             });
             if (cell.length) {
@@ -19,6 +20,44 @@ const ConfigBattlefield = ({ items, currentShipSize }) => {
             }
         }
         return ship;
+    }
+
+    const getShipAround = (ship) => {
+        const shipAroundZone = [];
+        function setAround(cell) {
+            if (cell.length) {
+                shipAroundZone.push(cell[0]);
+            }
+        }
+        ship.forEach(shipCell => {
+            setAround(cells.filter((item) => {
+                return item.x === shipCell.x - 1 && item.y === shipCell.y && !item.isAroundZone && !item.isSelected;
+            }));
+            setAround(cells.filter((item) => {
+                return item.x === shipCell.x + 1 && item.y === shipCell.y && !item.isAroundZoned && !item.isSelected;
+            }));
+            setAround(cells.filter((item) => {
+                return item.x === shipCell.x && item.y === shipCell.y - 1 && !item.isAroundZone && !item.isSelected;
+            }));
+            setAround(cells.filter((item) => {
+                return item.x === shipCell.x && item.y === shipCell.y + 1 && !item.isAroundZone && !item.isSelected;
+            }));
+
+            setAround(cells.filter((item) => {
+                return item.x === shipCell.x - 1 && item.y === shipCell.y - 1 && !item.isAroundZone && !item.isSelected;
+            }));
+            setAround(cells.filter((item) => {
+                return item.x === shipCell.x + 1 && item.y === shipCell.y + 1 && !item.isAroundZoned && !item.isSelected;
+            }));
+            setAround(cells.filter((item) => {
+                return item.x === shipCell.x + 1 && item.y === shipCell.y - 1 && !item.isAroundZone && !item.isSelected;
+            }));
+            setAround(cells.filter((item) => {
+                return item.x === shipCell.x - 1 && item.y === shipCell.y + 1 && !item.isAroundZone && !item.isSelected;
+            }));
+
+        });
+        return shipAroundZone;
     }
 
     const onContextMenu = (e) => {
@@ -44,7 +83,7 @@ const ConfigBattlefield = ({ items, currentShipSize }) => {
     }
 
     const onMouseOverHandler = (e) => {
-        if (e.target.classList.contains("cell")) {
+        if (e.target.classList.contains("cell") && canAddShip) {
             let x = e.target.dataset.x;
             let y = e.target.dataset.y;
             if (e.type === 'mouseover') {
@@ -58,23 +97,27 @@ const ConfigBattlefield = ({ items, currentShipSize }) => {
     }
 
     const onCellClick = (e) => {
-        if (e.target.classList.contains("cell")) {
-            let x = e.target.dataset.x;
-            let y = e.target.dataset.y;
-            let ship = getShip(x, y);
-            let newCells = [...cells];
-
+        if (e.target.classList.contains("cell") && canAddShip) {
+            const x = e.target.dataset.x;
+            const y = e.target.dataset.y;
+            const ship = getShip(x, y);
+            const newCells = [...cells];
             if (ship.length === currentShipSize) {
+                const aroundZode = getShipAround(ship);
+                aroundZode.forEach(item => {
+                    newCells[newCells.indexOf(item)].isAroundZone = true;
+                });
                 ship.forEach((item) => {
                     newCells[newCells.indexOf(item)].isShip = true;
                 });
+                addShip();
             }
             setSells(newCells);
         }
     }
 
     return (
-        <Battlefield cells={cells} onCellClick={onCellClick} onMouseOverHandler={onMouseOverHandler} onContextMenu={onContextMenu}/>
+        <Battlefield cells={cells} onCellClick={onCellClick} onMouseOverHandler={onMouseOverHandler} onContextMenu={onContextMenu} />
     )
 };
 export default ConfigBattlefield;

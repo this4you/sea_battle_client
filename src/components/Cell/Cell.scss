@@ -11,4 +11,7 @@
   transition-property: background-color;
   transition-duration: 0.5s;
   background-color: #539196;
+  &-shooted {
+    background-color: #965396;
+  }
 }

@@ -1,5 +1,6 @@
 const initialState = {
     currentShipSize: 1,
+    canAddShip: true,
     selectrors: [
         {
             "name": "one",
@@ -29,8 +30,21 @@ export default (state = initialState, { type, payload }) => {
         case "GAMECONFIG:SET_CURRENT_SIZE":
             return {
                 ...state,
-                currentShipSize: payload
+                currentShipSize: payload,
+                canAddShip: state.selectrors.filter(
+                    item => { return item.size === payload; }
+                )[0].count > 0
             };
+        case "GAMECONFIG:SET_SHIP":
+            return {
+                ...state,
+                selectrors: state.selectrors.map(
+                    item => item.size === state.currentShipSize ? { ...item, count: item.count - 1 } : item
+                ),
+                canAddShip: state.selectrors.filter(
+                    item => { return item.size === state.currentShipSize; }
+                )[0].count - 1 > 0
+            }
         default:
             return state;
     }

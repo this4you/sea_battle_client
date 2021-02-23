@@ -4,7 +4,7 @@ import { ShipSelector as ShipSelectorBase } from '../components';
 import { gameConfigActions } from '../redux/actions';
 const ShipSelector = ({ selectors, currentSelector, setСurrentSize }) => {
     return (
-        <ShipSelectorBase currentSelector={currentSelector} selectrors={selectors} onSelectSelected = {setСurrentSize} />
+        <ShipSelectorBase currentSelector={currentSelector} selectrors={selectors} onSelectSelected={setСurrentSize} />
     )
 };
 export default connect(({ gameConfigs }) =>
