@@ -1,6 +1,7 @@
 const initialState = {
     currentShipSize: 1,
     canAddShip: true,
+    readyToBattle: false,
     selectrors: [
         {
             "name": "one",
@@ -44,6 +45,13 @@ export default (state = initialState, { type, payload }) => {
                 canAddShip: state.selectrors.filter(
                     item => { return item.size === state.currentShipSize; }
                 )[0].count - 1 > 0
+            }
+        case "GAMECONFIG:READY_CHECK":
+            return {
+                ...state,
+                readyToBattle: state.selectrors.filter(
+                    item => { return item.count !== 0 }
+                ).length === 0
             }
         default:
             return state;

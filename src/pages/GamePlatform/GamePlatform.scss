@@ -1,5 +1,7 @@
 .platform {
+    margin-top: 60px;
     &-header  {
+        color:#539196;
         display: flex;
         justify-content: center;
     }
@@ -8,6 +10,28 @@
         justify-content: space-between;
         &-right {
             width: 30%;
+            min-width: 270px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .ready-button {
+                background-color: #539196;
+                width: 200px;
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 100px;
+                cursor: pointer;
+            }
+
+            .ready-button:hover {
+                background-color: #6fbfc5;
+            }
+
+            h1 {
+                color: white;
+            }
         }
     }
 }
