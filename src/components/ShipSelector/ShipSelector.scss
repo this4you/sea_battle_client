@@ -5,10 +5,12 @@
   width: 30%;
   min-width: 370px;
   &-wrap {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     text-align: center;
     h2 {
+      line-height: 64px;
       display: inline-block;
       margin-left: 20px;
       color: #539196;
@@ -16,7 +18,7 @@
   }
 
   &-ship {
-    margin-top: 10px;
+
     display: flex;
     cursor: pointer;
   }

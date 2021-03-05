@@ -8,6 +8,11 @@
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); */   
 }
 
+h1,h2,h3,h4,h5 {
+    color:#539196;
+    margin: 0;
+}
+
 .header-logo {
     position: absolute;
     background-color: #539196;

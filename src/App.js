@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import 'antd/dist/antd.css';
 import './App.css';
 import { GamePlatform, HomePage } from './pages'
 
@@ -8,8 +8,8 @@ function App() {
       <div className="header-logo">
         SEA battle
       </div>
-      {/* <GamePlatform/> */}
-      <HomePage />
+       <GamePlatform/>
+      {/*<HomePage />*/}
     </div>
   );
 }

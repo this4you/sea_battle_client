@@ -41,9 +41,8 @@
                     font-size: 30px;
                     outline-style: none;
                     box-shadow: none;
-                    border-color: transparent;
-                    border: 0px;
                     width: 250px;
+                    border: 0 transparent;
                     border-bottom: 3px solid;
                 }
             }
@@ -60,6 +59,32 @@
             }
             h2:hover {
                 background-color: #6fbfc5;
+            }
+            &-link {
+              display: flex;
+              align-items: center;
+              flex-direction: column;
+              .link-container {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                border: 3px solid;
+                padding: 10px;
+                input {
+                  cursor: pointer;
+                }
+                  &-text {
+                      color:#539196;
+                      font-size: 20px;
+                      outline-style: none;
+                      box-shadow: none;
+                      border: 0 transparent;
+                  }
+                  .link-icon {
+                      font-size: 30px;
+                      margin-right: 10px;
+                  }
+              }
             }
         }
     }
