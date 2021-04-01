@@ -10,23 +10,16 @@ for (let i = 0; i < 10; i++) {
 }
 
 const initialState = {
-    cells: items
+    cells: []
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, {type, payload}) => {
     switch (type) {
-        case "USER:SET_DATA":
-            return {
-                ...state,
-                data: payload,
-                isAuth: true,
-                token: window.localStorage.token
-            };
-        case "USER:SET_IS_AUTH":
-            return {
-                ...state,
-                isAuth: payload
-            };
+        // case "BATTLEFIELD:SET_CELLS":
+        //     return {
+        //         ...state,
+        //         cells: payload
+        //     };
         default:
             return state;
     }

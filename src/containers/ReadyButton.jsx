@@ -8,7 +8,6 @@ const antIcon = <SmileTwoTone style={{fontSize: 200}} spin/>;
 
 const ReadyButton = ({readyToBattle, cells}) => {
     const onReady = () => {
-        console.log(cells);
         setIsReady(true);
     }
     const [isReady, setIsReady] = useState(false);

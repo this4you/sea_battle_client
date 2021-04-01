@@ -1,4 +1,7 @@
 const initialState = {
+    _id: window.localStorage.gameId,
+    cells: [],
+    status: "",
     currentShipSize: 1,
     canAddShip: true,
     readyToBattle: false,
@@ -26,33 +29,54 @@ const initialState = {
     ]
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, {type, payload}) => {
     switch (type) {
         case "GAMECONFIG:SET_CURRENT_SIZE":
             return {
                 ...state,
                 currentShipSize: payload,
                 canAddShip: state.selectrors.filter(
-                    item => { return item.size === payload; }
+                    item => {
+                        return item.size === payload;
+                    }
                 )[0].count > 0
             };
         case "GAMECONFIG:SET_SHIP":
             return {
                 ...state,
                 selectrors: state.selectrors.map(
-                    item => item.size === state.currentShipSize ? { ...item, count: item.count - 1 } : item
+                    item => item.size === state.currentShipSize ? {...item, count: item.count - 1} : item
                 ),
                 canAddShip: state.selectrors.filter(
-                    item => { return item.size === state.currentShipSize; }
+                    item => {
+                        return item.size === state.currentShipSize;
+                    }
                 )[0].count - 1 > 0
             }
         case "GAMECONFIG:READY_CHECK":
             return {
                 ...state,
                 readyToBattle: state.selectrors.filter(
-                    item => { return item.count !== 0 }
+                    item => {
+                        return item.count !== 0
+                    }
                 ).length === 0
             }
+        case "GAMECONFIG:SET_GAME_DATA":
+            return {
+                ...state,
+                ...payload
+            }
+        case "GAMECONFIG:SET_GAME_STATUS":
+            return {
+                ...state,
+                status: payload
+            }
+        case "GAMECONFIG:SET_CELLS":
+            return {
+                ...state,
+                cells: payload
+            };
         default:
             return state;
     }

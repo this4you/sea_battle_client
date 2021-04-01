@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Battlefield from "../Battlefield";
+import {v4 as uuidv4 } from 'uuid';
 
 const ConfigBattlefield = ({ items, currentShipSize, addShip, canAddShip }) => {
-    const [cells, setSells] = useState(items);
+    const [cells, setSells] = useState('');
     const [isRow, setIsRow] = useState(false);
-
+    useEffect(() => {
+        setSells(items);
+    }, [items]);
     const getShip = (x, y) => {
         let ship = [];
         for (let i = 0; i < currentShipSize; i++) {
@@ -34,7 +37,7 @@ const ConfigBattlefield = ({ items, currentShipSize, addShip, canAddShip }) => {
                 return item.x === shipCell.x - 1 && item.y === shipCell.y && !item.isAroundZone && !item.isSelected;
             }));
             setAround(cells.filter((item) => {
-                return item.x === shipCell.x + 1 && item.y === shipCell.y && !item.isAroundZoned && !item.isSelected;
+                return item.x === shipCell.x + 1 && item.y === shipCell.y && !item.isAroundZone && !item.isSelected;
             }));
             setAround(cells.filter((item) => {
                 return item.x === shipCell.x && item.y === shipCell.y - 1 && !item.isAroundZone && !item.isSelected;
@@ -47,7 +50,7 @@ const ConfigBattlefield = ({ items, currentShipSize, addShip, canAddShip }) => {
                 return item.x === shipCell.x - 1 && item.y === shipCell.y - 1 && !item.isAroundZone && !item.isSelected;
             }));
             setAround(cells.filter((item) => {
-                return item.x === shipCell.x + 1 && item.y === shipCell.y + 1 && !item.isAroundZoned && !item.isSelected;
+                return item.x === shipCell.x + 1 && item.y === shipCell.y + 1 && !item.isAroundZone && !item.isSelected;
             }));
             setAround(cells.filter((item) => {
                 return item.x === shipCell.x + 1 && item.y === shipCell.y - 1 && !item.isAroundZone && !item.isSelected;
@@ -107,8 +110,10 @@ const ConfigBattlefield = ({ items, currentShipSize, addShip, canAddShip }) => {
                 aroundZode.forEach(item => {
                     newCells[newCells.indexOf(item)].isAroundZone = true;
                 });
+                const shipId = uuidv4();
                 ship.forEach((item) => {
                     newCells[newCells.indexOf(item)].isShip = true;
+                    newCells[newCells.indexOf(item)].shipId = shipId;
                 });
                 addShip();
             }
@@ -117,7 +122,7 @@ const ConfigBattlefield = ({ items, currentShipSize, addShip, canAddShip }) => {
     }
 
     return (
-        <Battlefield cells={cells} onCellClick={onCellClick} onMouseOverHandler={onMouseOverHandler} onContextMenu={onContextMenu} />
+        <Battlefield cells={cells} onCellClick={onCellClick} onMouseOverHandler={onMouseOverHandler} onContextMenu={onContextMenu} size={640} />
     )
 };
 export default ConfigBattlefield;

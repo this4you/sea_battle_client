@@ -1,0 +1,14 @@
+{
+  "gameConfig": {
+    "gameId": "window.localStorage.token",
+    "userId":"window.localStorage.token",
+    "gameStatus": "home config game",
+    "userJoined": false,
+    "currentShipSize": 1,
+    "canAddShip": true,
+    "selectrors": []
+  },
+  "gameProcess": {
+    "actionUser": ""
+  }
+}
