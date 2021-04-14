@@ -1,10 +1,13 @@
 const initialState = {
     _id: window.localStorage.gameId,
+    userId: window.localStorage.userId,
     cells: [],
+    enemyCells: [],
     status: "",
     currentShipSize: 1,
     canAddShip: true,
     readyToBattle: false,
+    canShoot: false,
     selectrors: [
         {
             "name": "one",
@@ -26,7 +29,8 @@ const initialState = {
             "size": 4,
             "count": 1
         }
-    ]
+    ],
+    readyUsers: []
 };
 
 export default (state = initialState, {type, payload}) => {
@@ -65,7 +69,9 @@ export default (state = initialState, {type, payload}) => {
         case "GAMECONFIG:SET_GAME_DATA":
             return {
                 ...state,
-                ...payload
+                ...payload,
+                userReady: payload?.readyUsers.indexOf(window.localStorage.getItem("userId")) !== -1,
+                canShoot: payload?.currentRoundUser === window.localStorage.getItem("userId")
             }
         case "GAMECONFIG:SET_GAME_STATUS":
             return {
@@ -77,6 +83,16 @@ export default (state = initialState, {type, payload}) => {
                 ...state,
                 cells: payload
             };
+        case "GAMECONFIG:SET_USER_READY":
+            return {
+                ...state,
+                userReady: payload
+            };
+        case "GAMECONFIG:SET_ENEMY_CELLS":
+            return {
+                ...state,
+                enemyCells: payload
+            }
         default:
             return state;
     }

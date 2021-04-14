@@ -1,6 +1,9 @@
+.battlefield-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .battlefield {
   display: flex;
   flex-wrap: wrap;
-  min-width: 640px;
-  max-width: 640px;
 }

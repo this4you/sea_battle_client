@@ -14,4 +14,16 @@
   &-shooted {
     background-color: #965396;
   }
+  &__shoot-selected {
+    background-color: #d93e3e;
+  }
+  &__shoot-wounded {
+    background-color: #d929b6;
+  }
+  &__shoot-missed {
+    background-color: #7a7e77;
+  }
+  &__shoot-killed {
+    background-color: #2727d2;
+  }
 }

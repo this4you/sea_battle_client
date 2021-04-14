@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {ConfigBattlefield as ConfigBattlefieldBase} from '../components';
 import {gameConfigActions} from '../redux/actions';
 
-const ConfigBattlefield = ({cells, currentShipSize, setShip, canAddShip, fetchGetCells}) => {
+const ConfigBattlefield = ({cells, currentShipSize, setShip, canAddShip, fetchGetCells, userReady}) => {
     useEffect(() => {
         if (cells.length === 0) {
             fetchGetCells();
@@ -11,7 +11,7 @@ const ConfigBattlefield = ({cells, currentShipSize, setShip, canAddShip, fetchGe
     }, []);
     return (
         <ConfigBattlefieldBase items={cells} currentShipSize={currentShipSize} addShip={setShip}
-                               canAddShip={canAddShip}/>
+                               canAddShip={canAddShip && !userReady}/>
     )
 };
 export default connect(({gameConfigs}) => (

@@ -17,6 +17,7 @@ h1,h2,h3,h4,h5 {
     position: absolute;
     background-color: #539196;
     color: white;
+    z-index: -1;
     width: 100px;
     height: 100px;
     border-radius: 50px;

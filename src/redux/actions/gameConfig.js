@@ -49,7 +49,6 @@ const actions = {
         return api.join(postData)
             .then(({data}) => {
                 if (data?.status === "success") {
-                    debugger
                     window.localStorage.setItem("gameId", data?.game._id)
                     window.localStorage.setItem("userId", data?.user);
                 }
@@ -63,10 +62,44 @@ const actions = {
                 dispatch(actions.setCells(data.cells));
         })
     },
+    fetchGetEnemyCells: () => dispatch => {
+        return api.enemyCells().then(({data}) => {
+            if (data && data.cells)
+                dispatch(actions.setEnemyCells(data.cells));
+        })
+    },
+
+    fetchSetCells: postData => dispatch => {
+        return api.setCells(postData).then(({data}) => {
+            if (data.status === "success") {
+                dispatch(actions.setUserReady(true));
+            }
+            return data;
+        })
+    },
+
+    fetchShoot: postData => dispatch => {
+        return api.shoot(postData).then(({data}) => {
+            if (data.status === "success") {
+                dispatch(actions.setUserReady(true));
+            }
+            return data;
+        })
+    },
 
     setCells: cells => ({
         type: "GAMECONFIG:SET_CELLS",
         payload: cells
     }),
+
+    setEnemyCells: cells => ({
+        type: "GAMECONFIG:SET_ENEMY_CELLS",
+        payload: cells
+    }),
+
+    setUserReady: isReady => ({
+        type: "GAMECONFIG:SET_USER_READY",
+        payload: isReady
+    })
 }
 export default actions;

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import 'antd/dist/antd.css';
 import './App.css';
-import {GamePlatform, HomePage, JoinPage} from './pages'
+import {GamePlatform, HomePage, JoinPage, BattleFieldPlatform} from './pages'
 import {connect} from "react-redux";
 import {gameConfigActions} from "./redux/actions";
 import {
@@ -16,6 +16,7 @@ const statusSwitch = (props) => {
         case 'config':
             return <GamePlatform {...props}/>;
         case 'game':
+            return  <BattleFieldPlatform {...props}/>
         default:
             return <div/>;
     }
@@ -24,7 +25,7 @@ const statusSwitch = (props) => {
 const MainRouteComponent = (props) => {
     return (
         <>
-            {statusSwitch(props)},
+            {statusSwitch(props)}
         </>
     )
 }
