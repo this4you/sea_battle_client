@@ -1,3 +1,7 @@
+* {
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
 .app {
     display: flex;
     align-items: center;

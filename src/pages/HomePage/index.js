@@ -10,11 +10,6 @@ const HomePage = ({fetchCreateGame, setGameData, joinToken, _id}) => {
     const startGame = () => {
         fetchCreateGame({"userName": nickName});
     }
-    useEffect(() => {
-        if(_id) {
-            socket.emit('join', _id);
-        }
-    }, [_id]);
 
     useEffect(() => {
         socket.on('SERVER:USER_JOINED', (gameObj) => {
@@ -23,11 +18,6 @@ const HomePage = ({fetchCreateGame, setGameData, joinToken, _id}) => {
                 setGameData(data);
             }
         });
-        // socket.on('SERVER:MESSAGES_READED', updateReadedStatus);
-        // return () => {
-        //     socket.removeListener('SERVER:DIALOG_CREATED', fetchDialogs);
-        //     socket.removeListener('SERVER:NEW_MESSAGE', fetchDialogs);
-        // };
     }, []);
 
 

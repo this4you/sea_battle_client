@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = "http://" + window.location.hostname + ":9009";
+//axios.defaults.baseURL = "http://41d7dd1f5a96.ngrok.io";
 console.log(process.env.REACT_APP_SERVER);
 axios.interceptors.request.use(
     config => {

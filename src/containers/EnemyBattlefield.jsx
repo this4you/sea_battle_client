@@ -75,7 +75,6 @@ const EnemyBattlefield = ({
                             setCanShoot(false);
                             break;
                         case "killed":
-                            debugger
                             setKilledCells(cells);
                             break;
                     }

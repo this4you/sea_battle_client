@@ -32,6 +32,11 @@ const MainRouteComponent = (props) => {
 }
 
 function App({status, _id, fetchGameInfo, setGameStatus}) {
+    useEffect(() => {
+        if(_id) {
+            socket.emit('join', _id);
+        }
+    }, [_id]);
 
     useEffect(() => {
         if (_id) {

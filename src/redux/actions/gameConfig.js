@@ -117,6 +117,21 @@ const actions = {
         payload: cells
     }),
 
+    setMyWoundedCell: cell => ({
+        type: "GAMECONFIG:SET_MY_WOUNDED_CELL",
+        payload: cell
+    }),
+
+    setMyMissedCell: cell => ({
+        type: "GAMECONFIG:SET_MY_MISSED_CELL",
+        payload: cell
+    }),
+
+    setMyKilledCells: cells => ({
+        type: "GAMECONFIG:SET_MY_KILL_CELL",
+        payload: cells
+    }),
+
     setCanShoot: isCanShoot => ({
         type: "GAMECONFIG:SET_CAN_SHOOT",
         payload: isCanShoot
