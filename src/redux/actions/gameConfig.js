@@ -100,6 +100,28 @@ const actions = {
     setUserReady: isReady => ({
         type: "GAMECONFIG:SET_USER_READY",
         payload: isReady
-    })
+    }),
+
+    setWoundedCell: cell => ({
+        type: "GAMECONFIG:SET_WOUNDED_CELL",
+        payload: cell
+    }),
+
+    setMissedCell: cell => ({
+        type: "GAMECONFIG:SET_MISSED_CELL",
+        payload: cell
+    }),
+
+    setKilledCells: cells => ({
+        type: "GAMECONFIG:SET_KILL_CELL",
+        payload: cells
+    }),
+
+    setCanShoot: isCanShoot => ({
+        type: "GAMECONFIG:SET_CAN_SHOOT",
+        payload: isCanShoot
+    }),
+
+
 }
 export default actions;

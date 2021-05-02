@@ -5,7 +5,7 @@ import {notification} from "antd";
 import {LinkOutlined, SmileOutlined} from "@ant-design/icons";
 
 const NameField = ({joinToken, enterClick, nickName, setNickName}) => {
-    const linkText = "http://localhost:3000/join/" + joinToken;
+    const linkText = `http://${window.location.hostname}:3000/join/${joinToken}`;
 
     const copyLink = () => {
         const textField = document.createElement('textarea')

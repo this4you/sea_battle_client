@@ -2,9 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {Battlefield} from '../components';
 import {gameConfigActions} from '../redux/actions';
-import {v4 as uuidv4} from "uuid";
 
-const EnemyBattlefield = ({enemyCells, fetchGetEnemyCells, fetchShoot}) => {
+const EnemyBattlefield = ({
+                              enemyCells,
+                              fetchGetEnemyCells,
+                              fetchShoot,
+                              canShoot,
+                              setWoundedCell,
+                              setMissedCell,
+                              setKilledCells,
+                              setCanShoot
+                          }) => {
     const [cells, setSells] = useState('');
     useEffect(() => {
         if (enemyCells.length === 0) {
@@ -15,7 +23,7 @@ const EnemyBattlefield = ({enemyCells, fetchGetEnemyCells, fetchShoot}) => {
     }, [enemyCells]);
 
     const onMouseOverHandler = (e) => {
-        if (e.target.classList.contains("cell")) {
+        if (e.target.classList.contains("cell") && canShoot) {
             let x = e.target.dataset.x;
             let y = e.target.dataset.y;
             if (e.type === 'mouseover') {
@@ -52,15 +60,27 @@ const EnemyBattlefield = ({enemyCells, fetchGetEnemyCells, fetchShoot}) => {
     }
 
     const onCellClick = (e) => {
-        if (e.target.classList.contains("cell")) {
+        if (e.target.classList.contains("cell") && canShoot) {
             const x = e.target.dataset.x;
             const y = e.target.dataset.y;
             const ship = getShip(x, y);
-            //const newCells = [...cells];
             if (ship.length === 1) {
-                fetchShoot({cellId: ship[0]._id});
+                fetchShoot({cellId: ship[0]._id}).then(({status, cell, cells}) => {
+                    switch (status) {
+                        case "wounded":
+                            setWoundedCell(cell);
+                            break;
+                        case "missed":
+                            setMissedCell(cell);
+                            setCanShoot(false);
+                            break;
+                        case "killed":
+                            debugger
+                            setKilledCells(cells);
+                            break;
+                    }
+                });
             }
-            //setSells(newCells);
         }
     }
 

@@ -14,7 +14,6 @@ const GamePlatform = () => {
                     <Steps direction="vertical" current={1}>
                         <Step title="Friend join" description="Friend join to the game." />
                         <Step title="Fill battlefield" description="Need set all ships and start the game." />
-                        <Step title="Fried prepare" description="Friend sets all ships and start the game." />
                     </Steps>
                     <ReadyButton />
                 </div>

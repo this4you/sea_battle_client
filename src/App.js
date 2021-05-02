@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import 'antd/dist/antd.css';
-import './App.css';
+import './App.scss';
 import {GamePlatform, HomePage, JoinPage, BattleFieldPlatform} from './pages'
 import {connect} from "react-redux";
 import {gameConfigActions} from "./redux/actions";
+import socket from "./socket";
 import {
     Switch,
     Route,

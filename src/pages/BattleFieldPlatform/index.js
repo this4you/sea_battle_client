@@ -1,6 +1,5 @@
 import React from 'react';
-import {Battlefield} from '../../components';
-import {UserBattlefield, EnemyBattlefield} from '../../containers';
+import {UserBattlefield, EnemyBattlefield, BattlefieldMiddleZone} from '../../containers';
 import './BattleFieldPlatform.scss';
 
 const BattleFieldPlatform = () => {
@@ -20,7 +19,7 @@ const BattleFieldPlatform = () => {
                 <UserBattlefield/>
             </div>
             <div className="b-platform__middle-zone">
-                middle
+                <BattlefieldMiddleZone />
             </div>
             <div className="b-platform__battlefield">
                 <EnemyBattlefield/>

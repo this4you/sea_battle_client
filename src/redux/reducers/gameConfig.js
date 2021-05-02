@@ -92,7 +92,42 @@ export default (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 enemyCells: payload
-            }
+            };
+        case "GAMECONFIG:SET_WOUNDED_CELL":
+            return {
+                ...state,
+                enemyCells: state.enemyCells.map(
+                    item => item._id === payload._id ? payload : item
+                )
+            };
+        case "GAMECONFIG:SET_MISSED_CELL":
+            return {
+                ...state,
+                enemyCells: state.enemyCells.map(
+                    item => item._id === payload._id ? payload : item
+                )
+            };
+        case "GAMECONFIG:SET_KILL_CELL":
+            const oldCells = state.enemyCells.filter((item) => !payload.some(killedCell => killedCell._id === item._id));
+            return {
+                ...state,
+                enemyCells: oldCells.concat(payload).sort(function (a, b) {
+                    let aSize = a.y;
+                    let bSize = b.y;
+                    let aLow = a.x;
+                    let bLow = b.x;
+                    if (aSize === bSize) {
+                        return (aLow < bLow) ? -1 : (aLow > bLow) ? 1 : 0;
+                    } else {
+                        return (aSize < bSize) ? -1 : 1;
+                    }
+                })
+            };
+        case "GAMECONFIG:SET_CAN_SHOOT":
+            return {
+                ...state,
+                canShoot: payload
+            };
         default:
             return state;
     }

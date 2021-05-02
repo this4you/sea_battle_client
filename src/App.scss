@@ -28,3 +28,18 @@ h1,h2,h3,h4,h5 {
     top: 10px;
     left: 10px;
 }
+
+.middle-zone {
+    line-height: 200px;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    border: 1px solid white;
+    border-radius: 100px;
+    background-color: #d93e3e;
+    &__can_shoot {
+        background-color: #6fbfc5;
+     }
+}
