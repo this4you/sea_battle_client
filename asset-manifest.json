@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/sea_battle_client/static/css/main.9760cfbf.chunk.css",
-    "main.js": "/sea_battle_client/static/js/main.09d92e9b.chunk.js",
-    "main.js.map": "/sea_battle_client/static/js/main.09d92e9b.chunk.js.map",
+    "main.js": "/sea_battle_client/static/js/main.0b1d937e.chunk.js",
+    "main.js.map": "/sea_battle_client/static/js/main.0b1d937e.chunk.js.map",
     "runtime-main.js": "/sea_battle_client/static/js/runtime-main.161ebdc2.js",
     "runtime-main.js.map": "/sea_battle_client/static/js/runtime-main.161ebdc2.js.map",
     "static/css/2.fc2db407.chunk.css": "/sea_battle_client/static/css/2.fc2db407.chunk.css",
-    "static/js/2.4e65e27e.chunk.js": "/sea_battle_client/static/js/2.4e65e27e.chunk.js",
-    "static/js/2.4e65e27e.chunk.js.map": "/sea_battle_client/static/js/2.4e65e27e.chunk.js.map",
+    "static/js/2.1ea403dd.chunk.js": "/sea_battle_client/static/js/2.1ea403dd.chunk.js",
+    "static/js/2.1ea403dd.chunk.js.map": "/sea_battle_client/static/js/2.1ea403dd.chunk.js.map",
     "static/js/3.5a9acd42.chunk.js": "/sea_battle_client/static/js/3.5a9acd42.chunk.js",
     "static/js/3.5a9acd42.chunk.js.map": "/sea_battle_client/static/js/3.5a9acd42.chunk.js.map",
     "index.html": "/sea_battle_client/index.html",
     "static/css/2.fc2db407.chunk.css.map": "/sea_battle_client/static/css/2.fc2db407.chunk.css.map",
     "static/css/main.9760cfbf.chunk.css.map": "/sea_battle_client/static/css/main.9760cfbf.chunk.css.map",
-    "static/js/2.4e65e27e.chunk.js.LICENSE.txt": "/sea_battle_client/static/js/2.4e65e27e.chunk.js.LICENSE.txt"
+    "static/js/2.1ea403dd.chunk.js.LICENSE.txt": "/sea_battle_client/static/js/2.1ea403dd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.161ebdc2.js",
     "static/css/2.fc2db407.chunk.css",
-    "static/js/2.4e65e27e.chunk.js",
+    "static/js/2.1ea403dd.chunk.js",
     "static/css/main.9760cfbf.chunk.css",
-    "static/js/main.09d92e9b.chunk.js"
+    "static/js/main.0b1d937e.chunk.js"
   ]
 }
